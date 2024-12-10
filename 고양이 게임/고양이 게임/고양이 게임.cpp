@@ -108,3 +108,16 @@ void showStartScreen() {
     printf("고양이를 움직이면 게임이 시작됩니다!!");
     drawCat(); // 고양이 표시
 }
+
+// 게임 오버 화면 출력
+void showGameOverScreen() {
+    system("cls");
+    int startX = WIDTH / 2 - 5; // 게임 오버 화면 중앙 배치
+    int startY = HEIGHT / 2 - 2;
+    for (int i = 0; i < 4; i++) {
+        gotoxy(startX, startY + i);
+        printf("%s", gameOverArt[i]);
+    }
+    Sleep(100);
+    _getch();
+}

@@ -33,6 +33,14 @@ void drawCat() {
     }
 }
 
+// 결승선을 그리기
+void drawGoal() {
+    for (int x = 0; x < WIDTH; x++) {
+        gotoxy(x, goalY);
+        printf("=");   // 결승선은 '=' 문자로 그림
+    }
+}
+
 // 특정 진공청소기를 그리기
 void drawVacuum(int index) {
     for (int i = 0; i < vacuumHeight; i++) {

@@ -48,3 +48,21 @@ void clearVacuum(int index) {
         printf("      "); // 진공청소기 크기만큼 지우기
     }
 }
+
+// 고양이 이동 처리
+void moveCat(char input) {
+    clearCat();       // 기존 고양이 위치 지우기
+    if (input == 'a' && catX > 0) {                       // 왼쪽 이동
+        catX -= 2;
+    }
+    else if (input == 'd' && catX + CAT_WIDTH < WIDTH) { // 오른쪽 이동
+        catX += 2;
+    }
+    else if (input == 'w' && catY > goalY) {             // 위로 이동
+        catY -= 1;
+    }
+    else if (input == 's' && catY + CAT_HEIGHT < HEIGHT) { // 아래로 이동
+        catY += 1;
+    }
+    drawCat();         // 새 위치에 고양이 그리기
+}

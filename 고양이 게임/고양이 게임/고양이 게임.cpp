@@ -99,6 +99,14 @@ int checkCollision() {
     return 0;     // 충돌 없음
 }
 
+// 게임 레벨 증가 및 속도 조절
+void increaseLevel() {
+    level++;
+    if (level > 3) level = 3; // 최대 3단계
+    if (level == 2) speed = 120; // 2단계 속도
+    if (level == 3) speed = 90; // 3단계 속도
+}
+
 // 게임 시작 화면 출력
 void showStartScreen() {
     system("cls");

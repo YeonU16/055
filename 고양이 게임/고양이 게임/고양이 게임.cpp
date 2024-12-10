@@ -25,3 +25,10 @@ void hideCursor() {
     cursorInfo.dwSize = 1;
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
 }
+
+void drawCat() {
+    for (int i = 0; i < CAT_HEIGHT; i++) {
+        gotoxy(catX, catY + i);
+        printf("%s", catArt[i]);
+    }
+}

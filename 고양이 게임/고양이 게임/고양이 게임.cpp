@@ -32,3 +32,19 @@ void drawCat() {
         printf("%s", catArt[i]);
     }
 }
+
+// 특정 진공청소기를 그리기
+void drawVacuum(int index) {
+    for (int i = 0; i < vacuumHeight; i++) {
+        gotoxy(vacuumX[index], vacuumY[index] + i);
+        printf("%s", vacuumArt[i]);
+    }
+}
+
+// 특정 진공청소기를 지우기
+void clearVacuum(int index) {
+    for (int i = 0; i < vacuumHeight; i++) {
+        gotoxy(vacuumX[index], vacuumY[index] + i);
+        printf("      "); // 진공청소기 크기만큼 지우기
+    }
+}

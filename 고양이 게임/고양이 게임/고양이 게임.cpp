@@ -74,18 +74,11 @@ void hideCursor() {
     SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
 }
 
+//고양이 그리기
 void drawCat() {
     for (int i = 0; i < CAT_HEIGHT; i++) {
         gotoxy(catX, catY + i);
         printf("%s", catArt[i]);
-    }
-}
-
-// 결승선을 그리기
-void drawGoal() {
-    for (int x = 0; x < WIDTH; x++) {
-        gotoxy(x, goalY);
-        printf("=");   // 결승선은 '=' 문자로 그림
     }
 }
 
@@ -105,6 +98,21 @@ void clearVacuum(int index) {
     }
 }
 
+// 결승선을 그리기
+void drawGoal() {
+    for (int x = 0; x < WIDTH; x++) {
+        gotoxy(x, goalY);
+        printf("=");   // 결승선은 '=' 문자로 그림
+    }
+}
+
+// 고양이를 화면에서 지우기
+void clearCat() {
+    for (int i = 0; i < CAT_HEIGHT; i++) {
+        gotoxy(catX, catY + i);
+        printf("       ");      // 고양이 크기만큼 공백으로 덮기
+    }
+}
 // 진공청소기 이동 및 충돌 영역 업데이트
 void moveVacuums() {
     for (int i = 0; i < level; i++) { // 현재 단계에 따라 진공청소기 수 증가
@@ -145,6 +153,16 @@ int checkCollision() {
         }
     }
     return 0;     // 충돌 없음
+}
+
+// 진공청소기 초기화 (랜덤 배치 및 방향 설정)
+void initializeVacuums() {
+    int startY = HEIGHT / 2 - (level * 2); // 화면 중간부터 진공청소기 배치 시작
+    for (int i = 0; i < MAX_VACUUMS; i++) {
+        vacuumX[i] = rand() % (WIDTH - vacuumWidth);      // X 좌표 랜덤
+        vacuumY[i] = startY + i * 2;     //  Y 좌표는 일정 간격으로 배치
+        vacuumDirection[i] = (rand() % 2 == 0) ? 1 : -1;    // 랜덤 방향
+    }
 }
 
 // 게임 레벨 증가 및 속도 조절

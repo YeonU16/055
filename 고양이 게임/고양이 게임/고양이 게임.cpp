@@ -12,6 +12,54 @@
 #define CAT_HEIGHT 3   // 고양이 아트 높이
 #define MAX_VACUUMS 10 // 진공청소기 최대 수
 
+// 고양이 텍스트 아트
+char* catArt[] = {
+    " /\\_/\\ ",
+    "( o.o )",
+    " > ^ < "
+};
+
+// 진공청소기 텍스트 아트
+char* vacuumArt[] = {
+    "[====]",
+    " |||| "
+};
+
+// 엔딩 장면 텍스트 아트
+char* basketArt[] = {
+    "      /\\_/\\   ",
+    "     ( o.o )  ",
+    "    |       |",
+    "    |_______|",
+    "                                         ",
+    "                                         ",
+    "고양이를 무사히 구출하는데 성공했습니다!",
+    "                                         ",
+
+};
+
+// 게임 오버 텍스트 아트
+char* gameOverArt[] = {
+    "  /\\_/\\  ",
+    " ( x.x ) ",
+    "  > ^ <  ",
+    " 게임 오버!"
+};
+
+// 진공청소기와 고양이의 크기
+const int vacuumWidth = 6;
+const int vacuumHeight = 2;
+const int basketHeight = 7;
+
+// 게임 상태 변수
+int catX = WIDTH / 2 - CAT_WIDTH / 2, catY = HEIGHT - CAT_HEIGHT - 1;  //고양이 초기 위치(가로,세로)
+int vacuumX[MAX_VACUUMS], vacuumY[MAX_VACUUMS]; // 진공청소기 위치
+int vacuumDirection[MAX_VACUUMS]; // 각 진공청소기의 방향
+int goalY = 3;    // 결승선 Y 좌표
+int level = 1;    // 초기 단계
+int speed = 150;  // 초기 속도
+
+
 // 커서를 특정 위치로 이동시키는 함수
 void gotoxy(int x, int y) {
     COORD coord = { x, y };

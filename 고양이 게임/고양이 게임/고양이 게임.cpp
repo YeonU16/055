@@ -121,3 +121,14 @@ void showGameOverScreen() {
     Sleep(100);
     _getch();
 }
+
+// 엔딩 화면 출력
+void showEndingScreen() {
+    system("cls");
+    int startX = WIDTH / 2 - 6; // 바구니 아트 중앙 배치
+    int startY = HEIGHT / 2 - basketHeight / 2;
+    for (int i = 0; i < basketHeight; i++) {
+        gotoxy(startX, startY + i);
+        printf("%s", basketArt[i]);
+    }
+}

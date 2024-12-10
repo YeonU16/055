@@ -98,3 +98,13 @@ int checkCollision() {
     }
     return 0;     // 충돌 없음
 }
+
+// 게임 시작 화면 출력
+void showStartScreen() {
+    system("cls");
+    gotoxy(WIDTH / 2 - 10, HEIGHT / 2 - 2);
+    printf("현재 단계: %d", level);
+    gotoxy(WIDTH / 2 - 20, HEIGHT / 2);
+    printf("고양이를 움직이면 게임이 시작됩니다!!");
+    drawCat(); // 고양이 표시
+}

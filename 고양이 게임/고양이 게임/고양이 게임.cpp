@@ -11,3 +11,17 @@
 #define CAT_WIDTH 7    // 고양이 아트 너비
 #define CAT_HEIGHT 3   // 고양이 아트 높이
 #define MAX_VACUUMS 10 // 진공청소기 최대 수
+
+// 커서를 특정 위치로 이동시키는 함수
+void gotoxy(int x, int y) {
+    COORD coord = { x, y };
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+// 콘솔 커서를 숨기는 함수
+void hideCursor() {
+    CONSOLE_CURSOR_INFO cursorInfo;
+    cursorInfo.bVisible = 0;
+    cursorInfo.dwSize = 1;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
+}

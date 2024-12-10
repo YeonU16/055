@@ -78,3 +78,15 @@ void moveCat(char input) {
     }
     drawCat();         // 새 위치에 고양이 그리기
 }
+
+// 고양이와 진공청소기 충돌 여부 확인
+int checkCollision() {
+    // 진공청소기와 고양이 충돌
+    for (int i = 0; i < level; i++) {
+        if (catY + CAT_HEIGHT > vacuumY[i] && catY < vacuumY[i] + vacuumHeight &&
+            catX + CAT_WIDTH > vacuumX[i] && catX < vacuumX[i] + vacuumWidth) {
+            return 1; // 충돌 발생
+        }
+    }
+    return 0;     // 충돌 없음
+}

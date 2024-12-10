@@ -49,6 +49,18 @@ void clearVacuum(int index) {
     }
 }
 
+// 진공청소기 이동 및 충돌 영역 업데이트
+void moveVacuums() {
+    for (int i = 0; i < level; i++) { // 현재 단계에 따라 진공청소기 수 증가
+        clearVacuum(i);     // 기존 위치의 진공청소기를 지움
+        vacuumX[i] += vacuumDirection[i] * 2;    // 기존 위치의 진공청소기를 지움
+        if (vacuumX[i] <= 0 || vacuumX[i] + vacuumWidth >= WIDTH) {
+            vacuumDirection[i] *= -1; // 화면 경계를 넘으면 방향 반전
+        }
+        drawVacuum(i);     // 새 위치에 진공청소기 그리기
+    }
+}
+
 // 고양이 이동 처리
 void moveCat(char input) {
     clearCat();       // 기존 고양이 위치 지우기
